@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use swiftsnp, please cite it as below, and also cite snp-dists, from which it derives."
+title: "swiftsnp: a byte-identical drop-in replacement for snp-dists"
+type: software
+version: 1.0.0
+date-released: 2026-10-20
+license: GPL-3.0-only
+repository-code: "https://github.com/joe-b-christensen/swiftsnp"
+authors:
+  - family-names: Christensen
+    given-names: Joe
+    orcid: "https://orcid.org/0009-0007-0908-1299"
+    email: joechristensen@clin.au.dk
+    affiliation: "Translational Neuropsychiatry Unit (TNU), Department of Clinical Medicine, Aarhus University, Denmark"
+keywords:
+  - SNP distance matrix
+  - genomic epidemiology
+  - snp-dists
+  - performance
+abstract: >-
+  swiftsnp computes pairwise SNP distance matrices from FASTA alignments with output byte-identical to
+  snp-dists 1.2.0 (-j 1) for every option and thread count. On five published alignments it was 336x faster
+  than the fastest other tool that writes the same matrix, and 2,894x faster than single-threaded snp-dists
+  (geometric means, two threads, AVX-512 CPU).
+references:
+  - type: software
+    title: "snp-dists: pairwise SNP distance matrix from a FASTA sequence alignment"
+    version: 1.2.0
+    authors:
+      - family-names: Seemann
+        given-names: Torsten
+      - family-names: Klötzl
+        given-names: Fabian
+      - family-names: Page
+        given-names: Andrew J.
+    repository-code: "https://github.com/tseemann/snp-dists"
+    license: GPL-3.0-only

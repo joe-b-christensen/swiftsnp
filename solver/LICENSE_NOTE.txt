@@ -1,0 +1,13 @@
+solver/ is derived from snp-dists (GPL-3.0, Torsten Seemann et al.). Derived work stays GPL-3.0.
+solver/libdeflate/ is vendored from https://github.com/ebiggers/libdeflate (v1.26, commit 92e6a0d), decompression
+sources only. Licence: MIT (see solver/libdeflate/COPYING), which is GPL-3.0-compatible.
+SwiftSNP modifications to the vendored libdeflate (all marked "SwiftSNP" in the source):
+  - lib/deflate_decompress.c, lib/decompress_template.h: optional preset history length for match offsets,
+    optional start bit offset, optional stop at a given block boundary (input bit position or output size),
+    reporting of consumed input bits; small API (swx_*) in libdeflate.h.
+  - lib/decompress_template_u16.h: generated from decompress_template.h; identical decoder writing u16 elements.
+  - lib/decompress_template.h and lib/decompress_template_u16.h: the fast match copy for offsets >= one word
+    copies 2 words before its loop instead of 5 (same bytes; faster on streams of short matches).
+The stop/preset/u16 additions are used only for two-thread decoding of large gzip members; with them unset the
+decoder behaves as upstream. The shorter match copy affects all gzip decoding (output identical by construction:
+it only changes how many bytes are copied before the length test).

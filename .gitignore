@@ -1,0 +1,7 @@
+bench/
+ext/
+solver/swiftsnp
+failures/
+__pycache__/
+data/real_data/
+last_eval*.json
